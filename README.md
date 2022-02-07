@@ -1,6 +1,4 @@
-# xbar-homeassistant-plugin
-
-![homeassistant](homeassistant.png)
+# xbar-plugins
 
 - Install [xbar](https://xbarapp.com/)
-- Copy script to `~/Library/Application Support/xbar/plugins` and update `ha_url` and `ha_token`
+- Copy script to `~/Library/Application Support/xbar/plugins` and update parameters

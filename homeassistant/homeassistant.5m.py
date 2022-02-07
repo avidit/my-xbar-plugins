@@ -4,7 +4,7 @@
 # <xbar.version>v1.0</xbar.version>
 # <xbar.author.github>avidit</xbar.author.github>
 # <xbar.desc>Control Homeassistant</xbar.desc>
-# <xbar.image>https://raw.githubusercontent.com/avidit/xbar-homeassistant-plugin/develop/homeassistant.png</xbar.image>
+# <xbar.image>https://raw.githubusercontent.com/avidit/my-xbar-plugins/develop/homeassistant/homeassistant.png</xbar.image>
 # <xbar.dependencies>python</xbar.dependencies>
 
 # Installation:
@@ -15,14 +15,15 @@ import json
 import argparse
 from requests import get, post
 
-ha_url = "http://homeassistant.local:8123/"
-ha_token = ""
-api_url = f"{ha_url}api/"
-headers = {"Authorization": f"Bearer {ha_token}", "content-type": "application/json"}
+HOMEASSISTANT_URL = "http://homeassistant.local:8123/"
+HOMEASSISTANT_TOKEN = "ey..."
 
-print(f"🏠")
+api_url = f"{HOMEASSISTANT_URL}api/"
+headers = {"Authorization": f"Bearer {HOMEASSISTANT_TOKEN}", "content-type": "application/json"}
+ha_icon = "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABgAAAAYADwa0LPAAABL0lEQVQ4y8WUPS+DYRSGrwodlYhIqFWEnbBWrF34IQz9D34Cg48gpJtRRHTSxaYdDNhMTfyEy+A03r7efgVxJyfPk/Nx5z7n+YD/gJpTc4PkjgxANg7UgFrsf6RsXK37hQd18idk90H0HGb4hlOaIjtWp8NOwldXX9XGsGSqZfU8rGwnGoOQ1VNFFwmFl6nYW9f2u5C1sRyWhe8zTZG11DV1Qj3IINxXC+p65HaQtu/hDjAGvAOnwDxwB1QymqnweS/ngLOoyQO7WW1X1Wu1qG6pebWZUNgM33bk3KjVJEfWS9kEDoFVYAooAa2wUvhWgCNgo98pV1MDf1JnE/GZUJlEX4VJLAC3cQiFmN1Sr4JR+mMRKCb2PdH3txkWaYVXwEtGXivWvYzY42+L+lt8AFUJtvq22mzaAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTAyLTA3VDE5OjUyOjEzKzAwOjAwOfvcFAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wMi0wN1QxOTo1MjoxMyswMDowMEimZKgAAAAASUVORK5CYII="
+
+print(f"|templateImage={ha_icon}")
 print("---")
-
 
 def is_up():
     try:
@@ -128,4 +129,4 @@ if __name__ == "__main__":
                 pass
 
     print("---")
-    print(f"Open Home Assistant | href={ha_url}")
+    print(f"Open Home Assistant | href={HOMEASSISTANT_URL}")
