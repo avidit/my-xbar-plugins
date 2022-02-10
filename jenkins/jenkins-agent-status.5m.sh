@@ -17,7 +17,7 @@
 # jq (https://stedolan.github.io/jq/)
 
 # Installation:
-# 1. Copy this script to your xbar plugin folder
+# 1. Copy this script to xbar plugin folder ~/Library/Application Support/xbar/plugins
 # 2. Ensure the plugin file is executable by running chmod +x jenkins-agent-status.5m.sh
 
 echo "💻"
@@ -30,19 +30,20 @@ echo "---"
 
 function check_status() {
     AGENT=$1
+    AGENT_URL="$JENKINS_URL/computer/$AGENT"
     STATUS_URL="$JENKINS_URL/computer/$AGENT/api/json"
     RESPONSE=$(curl --silent --user "$JENKINS_USER_ID:$JENKINS_API_TOKEN" "$STATUS_URL")
     OFFLINE=$(echo "$RESPONSE" | /usr/local/bin/jq -r '.offline')
     REASON=$(echo "$RESPONSE" | /usr/local/bin/jq -r '.offlineCauseReason')
     if [[ "$OFFLINE" == "false" ]];
     then
-        echo "✅ $AGENT: Online | href=${JENKINS_URL}/computer/$1/"
+        echo "✅ $AGENT: Online | href=${AGENT_URL}"
     elif [[ "$OFFLINE" == "true" ]];
     then
-        echo "❌ $AGENT: Offline | href=${JENKINS_URL}/computer/$1/"
+        echo "❌ $AGENT: Offline | href=${AGENT_URL}"
         echo "-- ${REASON//$'\n'*/ }"
     else
-        echo "❓ $AGENT: Unknown"
+        echo "❓ $AGENT: Unknown | href=${AGENT_URL}"
     fi
 }
 
