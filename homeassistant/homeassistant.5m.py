@@ -7,10 +7,6 @@
 # <xbar.image>https://raw.githubusercontent.com/avidit/my-xbar-plugins/develop/homeassistant/homeassistant.png</xbar.image>
 # <xbar.dependencies>python</xbar.dependencies>
 
-# Variables:
-# <xbar.var>string(HOMEASSISTANT_URL="http://homeassistant.local:8123/"): Home assistant URL.</xbar.var>
-# <xbar.var>string(HOMEASSISTANT_TOKEN="ey..."): Long Lived Access Token. See: https://www.home-assistant.io/docs/authentication/</xbar.var>
-
 # Installation:
 # 1. Copy this script to xbar plugin folder ~/Library/Application Support/xbar/plugins
 # 2. Ensure the plugin file is executable by running chmod +x homeassistant.5m.py
@@ -19,18 +15,18 @@ import json
 import argparse
 from requests import get, post
 
+ha_url = "http://homeassistant.local:8123/"
+ha_token = "ey..."
 ha_icon = "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABgAAAAYADwa0LPAAABL0lEQVQ4y8WUPS+DYRSGrwodlYhIqFWEnbBWrF34IQz9D34Cg48gpJtRRHTSxaYdDNhMTfyEy+A03r7efgVxJyfPk/Nx5z7n+YD/gJpTc4PkjgxANg7UgFrsf6RsXK37hQd18idk90H0HGb4hlOaIjtWp8NOwldXX9XGsGSqZfU8rGwnGoOQ1VNFFwmFl6nYW9f2u5C1sRyWhe8zTZG11DV1Qj3IINxXC+p65HaQtu/hDjAGvAOnwDxwB1QymqnweS/ngLOoyQO7WW1X1Wu1qG6pebWZUNgM33bk3KjVJEfWS9kEDoFVYAooAa2wUvhWgCNgo98pV1MDf1JnE/GZUJlEX4VJLAC3cQiFmN1Sr4JR+mMRKCb2PdH3txkWaYVXwEtGXivWvYzY42+L+lt8AFUJtvq22mzaAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTAyLTA3VDE5OjUyOjEzKzAwOjAwOfvcFAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wMi0wN1QxOTo1MjoxMyswMDowMEimZKgAAAAASUVORK5CYII="
 print(f"|templateImage={ha_icon}")
 print("---")
 
-ha_url = os.environ.get('HOMEASSISTANT_URL')
 if not ha_url:
-    print('HOMEASSISTANT_URL not set')
+    print('Homeassistant url not set')
     sys.exit()
 
-ha_token = os.environ.get('HOMEASSISTANT_TOKEN')
 if not ha_token:
-    print('HOMEASSISTANT_TOKEN not set')
+    print('Homeassisnta token not set')
     sys.exit()
 
 if not ha_url.endswith('/'):

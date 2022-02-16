@@ -1,7 +1,7 @@
-## homeassistant-plugin
+# homeassistant-plugin
 
 ![homeassistant](homeassistant.png)
 
-- Copy script to `~/Library/Application Support/xbar/plugins` and update the following variables in xbar plugins browser:
-  - `HOMEASSISTANT_URL`
-  - `HOMEASSISTANT_TOKEN`
+- Copy script to `~/Library/Application Support/xbar/plugins` and update the following:
+  - `ha_url` Homeassistant URL
+  - `ha_roken` Long lived access token
